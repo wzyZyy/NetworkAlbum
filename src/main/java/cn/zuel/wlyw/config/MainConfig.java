@@ -1,6 +1,8 @@
 package cn.zuel.wlyw.config;
 
+import cn.zuel.wlyw.controller.AlbumController;
 import cn.zuel.wlyw.controller.IndexController;
+import cn.zuel.wlyw.controller.UserController;
 import cn.zuel.wlyw.model._MappingKit;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
@@ -30,6 +32,9 @@ public class MainConfig extends JFinalConfig {
     @Override
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
+        me.add("/user", UserController.class);
+        me.add("/album", AlbumController.class);
+        me.add("/image", IndexController.class);
     }
 
     @Override
