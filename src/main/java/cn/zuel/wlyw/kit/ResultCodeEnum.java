@@ -5,7 +5,7 @@ public enum ResultCodeEnum {
 
     SITES_OPEN("1001", "网页打开成功"),
     INTERNTE_FAILURE("1002", "网络错误，请重试"),
-    UNKOWN_ERROE("1003", "未知的错误"),
+    UNKOWN_ERROE("1003", "服务器未知的错误"),
     REQUEST_NO_PARAM_ID_ERROR("1004", "页面请求参数错误"),
     DB_SYS_ERROR("1005", "数据库错误"),
     RECORD_NO_EXIST("1006", "记录不存在"),
@@ -68,8 +68,11 @@ public enum ResultCodeEnum {
     NOTICE_UPLOAD_SUCCESS("6018", "货品上传成功"),
     NOTICE_UPDATE_STATE_SUCCESS("6019", "求购信息修改状态成功"),
     NOTICE_UPDATE_STATE_FAILURE_DB_ERROR("6020", "求购信息修改状态失败_数据库错误"),
-    NOTICE_QUERY_SUCCESS("6021", "求购信息查询成功"),
-    NOTICE_QUERY_NULL("6022", "求购信息查询为空"),
+
+    IMAGE_QUERY_SUCCESS("6021", "图片查询成功"),
+    IMAGE_QUERY_NULL("6022", "图片查询为空"),
+    IMAGE_QUERY_FAILURE("6021", "图片查询失败"),
+
 
     USER_QUERY_SUCCESS("7000", "用户查询成功"),
     TEST("9000", "测试");

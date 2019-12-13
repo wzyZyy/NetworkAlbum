@@ -17,10 +17,24 @@ public class ImageController extends Controller {
      */
     public void uploadImages() {
         BaseResponse baseResponse = new BaseResponse();
-        String i_a_id = getPara("i_a_id");
+        String i_a_id = getPara("a_id");
         List<UploadFile> images = getFiles("files");
         if (!StrKit.isBlank(i_a_id)) {
             baseResponse = imageService.uploadImages(i_a_id, images);
+        } else {
+            baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
+        }
+        renderJson(baseResponse);
+    }
+
+    /**
+     * 获取相册中的图片
+     */
+    public void getImages() {
+        BaseResponse baseResponse = new BaseResponse();
+        String i_a_id = getPara("a_id");
+        if (!StrKit.isBlank(i_a_id)) {
+            baseResponse = imageService.getImages(i_a_id);
         } else {
             baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
         }

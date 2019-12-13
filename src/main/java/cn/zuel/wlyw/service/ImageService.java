@@ -48,4 +48,25 @@ public class ImageService {
         }
         return baseResponse;
     }
+
+    /**
+     * 查询相册中的图片
+     *
+     * @param i_a_id
+     * @return
+     */
+    public BaseResponse getImages(String i_a_id) {
+        BaseResponse baseResponse = new BaseResponse();
+        List<Image> imageList = Image.dao.find("select * from image where i_a_id = " + "'" + i_a_id + "'");
+        if (imageList.size() > 0) {
+            baseResponse.setData(imageList);
+            baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_SUCCESS);
+        } else if (imageList.size() == 0) {
+            baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_NULL);
+        } else {
+            // 服务器未知错误
+            baseResponse.setResult(ResultCodeEnum.UNKOWN_ERROE);
+        }
+        return baseResponse;
+    }
 }
