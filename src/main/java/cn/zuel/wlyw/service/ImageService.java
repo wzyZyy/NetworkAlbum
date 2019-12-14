@@ -18,7 +18,7 @@ public class ImageService {
     public BaseResponse uploadImage(final String i_a_id, final UploadFile uploadFile) {
         final BaseResponse baseResponse = new BaseResponse();
         String i_name = uploadFile.getFileName();
-        String i_path = "/upload/" + i_name;
+        String i_path = "/upload/temp/" + i_name;
         Image image = new Image();
         image.setIAId(Integer.parseInt(i_a_id));
         image.setIName(i_name);
