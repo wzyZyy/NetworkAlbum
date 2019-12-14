@@ -15,12 +15,12 @@ public class ImageController extends Controller {
     /**
      * 上传图片
      */
-    public void uploadImages() {
+    public void uploadImage() {
         BaseResponse baseResponse = new BaseResponse();
         String i_a_id = getPara("a_id");
-        List<UploadFile> images = getFiles("files");
+        UploadFile image = getFile("file");
         if (!StrKit.isBlank(i_a_id)) {
-            baseResponse = imageService.uploadImages(i_a_id, images);
+            baseResponse = imageService.uploadImage(i_a_id, image);
         } else {
             baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
         }
