@@ -15,8 +15,9 @@ public class ImageController extends Controller {
      */
     public void uploadImage() {
         BaseResponse baseResponse = new BaseResponse();
-        String i_a_id = getPara("a_id");
+        //切记先getFile!!!
         UploadFile image = getFile("file");
+        String i_a_id = getPara("a_id");
         System.out.println("i_a_id = " + i_a_id);
         if (!StrKit.isBlank(i_a_id)) {
             baseResponse = imageService.uploadImage(i_a_id, image);
