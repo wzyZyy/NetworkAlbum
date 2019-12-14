@@ -71,7 +71,12 @@ public enum ResultCodeEnum {
 
     IMAGE_QUERY_SUCCESS("6021", "图片查询成功"),
     IMAGE_QUERY_NULL("6022", "图片查询为空"),
-    IMAGE_QUERY_FAILURE("6021", "图片查询失败"),
+
+    ALBUM_QUERY_SUCCESS("6023", "相册查询成功"),
+    ALBUM_QUERY_NULL("6024", "相册查询为空"),
+    ALBUM_DELETE_SUCCESS("6025", "相册删除成功"),
+    ALBUM_DELETE_FAILURE("6026", "相册删除失败"),
+    ALBUM_NOT_EXIST("6027", "相册不存在"),
 
 
     USER_QUERY_SUCCESS("7000", "用户查询成功"),

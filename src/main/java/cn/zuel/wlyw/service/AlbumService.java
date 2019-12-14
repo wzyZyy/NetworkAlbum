@@ -56,10 +56,10 @@ public class AlbumService {
         if (albums.size() > 0) {
             // 查找相册不为空
             baseResponse.setData(albums);
-            baseResponse.setResult(ResultCodeEnum.USER_QUERY_SUCCESS);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_QUERY_SUCCESS);
         } else {
             // 相册为空
-            baseResponse.setResult(ResultCodeEnum.RECORD_NO_EXIST);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_QUERY_NULL);
         }
         return baseResponse;
     }
@@ -96,13 +96,13 @@ public class AlbumService {
         if (album != null) {
             // 查找相册不为空
             if (album.delete()) {
-                baseResponse.setResult(ResultCodeEnum.DB_DELETE_SUCCESS);
+                baseResponse.setResult(ResultCodeEnum.ALBUM_DELETE_SUCCESS);
             } else {
-                baseResponse.setResult(ResultCodeEnum.DB_DELETE_FAILURE);
+                baseResponse.setResult(ResultCodeEnum.ALBUM_DELETE_FAILURE);
             }
         } else {
             // 该相册不存在
-            baseResponse.setResult(ResultCodeEnum.RECORD_NO_EXIST);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_NOT_EXIST);
         }
         return baseResponse;
     }
