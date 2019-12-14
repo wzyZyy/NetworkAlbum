@@ -7,8 +7,6 @@ import com.jfinal.core.Controller;
 import com.jfinal.kit.StrKit;
 import com.jfinal.upload.UploadFile;
 
-import java.util.List;
-
 public class ImageController extends Controller {
     ImageService imageService = new ImageService();
 
@@ -19,6 +17,7 @@ public class ImageController extends Controller {
         BaseResponse baseResponse = new BaseResponse();
         String i_a_id = getPara("a_id");
         UploadFile image = getFile("file");
+        System.out.println("i_a_id = " + i_a_id);
         if (!StrKit.isBlank(i_a_id)) {
             baseResponse = imageService.uploadImage(i_a_id, image);
         } else {
