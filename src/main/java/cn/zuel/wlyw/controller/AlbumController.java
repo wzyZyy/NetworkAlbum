@@ -31,11 +31,30 @@ public class AlbumController extends Controller {
     }
 
     /**
-     * 获取所有的相册
+     * 获取某一用户所有的相册
      */
     public void getAlbums() {
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse = albumService.getAlbums();
+        String u_id = getPara("u_id");
+        if (!StrKit.isBlank(u_id)) {
+            baseResponse = albumService.getAlbums(u_id);
+        } else {
+            baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
+        }
+        renderJson(baseResponse);
+    }
+
+    /**
+     * 获取其它共享的相册
+     */
+    public void getShareAlbums() {
+        BaseResponse baseResponse = new BaseResponse();
+        String u_id = getPara("u_id");
+        if (!StrKit.isBlank(u_id)) {
+            baseResponse = albumService.getShareAlbums(u_id);
+        } else {
+            baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
+        }
         renderJson(baseResponse);
     }
 

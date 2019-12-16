@@ -46,13 +46,33 @@ public class AlbumService {
     }
 
     /**
-     * 获取所有的相册
+     * 获取用户所有的相册
      *
      * @return
      */
-    public BaseResponse getAlbums() {
+    public BaseResponse getAlbums(String u_id) {
         BaseResponse baseResponse = new BaseResponse();
-        List<Album> albums = Album.dao.find("select * from album");
+        List<Album> albums = Album.dao.find("select * from album where a_u_id = " + "'" + u_id + "'");
+        if (albums.size() > 0) {
+            // 查找相册不为空
+            baseResponse.setData(albums);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_QUERY_SUCCESS);
+        } else {
+            // 相册为空
+            baseResponse.setResult(ResultCodeEnum.ALBUM_QUERY_NULL);
+        }
+        return baseResponse;
+    }
+
+    /**
+     * 获取其它共享的相册（a_auth = 1）
+     *
+     * @param u_id
+     * @return
+     */
+    public BaseResponse getShareAlbums(String u_id) {
+        BaseResponse baseResponse = new BaseResponse();
+        List<Album> albums = Album.dao.find("select * from album where a_u_id != " + "'" + u_id + "'" + "and a_auth = 1");
         if (albums.size() > 0) {
             // 查找相册不为空
             baseResponse.setData(albums);
@@ -135,6 +155,6 @@ public class AlbumService {
             // 该相册不存在
             baseResponse.setResult(ResultCodeEnum.RECORD_NO_EXIST);
         }
-        return  baseResponse;
+        return baseResponse;
     }
 }
