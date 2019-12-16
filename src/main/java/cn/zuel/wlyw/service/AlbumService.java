@@ -19,7 +19,7 @@ public class AlbumService {
      */
     public BaseResponse createAlbum(String a_u_id, String a_t_id, String a_name, String a_desc, String a_auth) {
         BaseResponse baseResponse = new BaseResponse();
-        List<Album> albums = Album.dao.find("select * from user where a_name = " + "'" + a_name + "'");
+        List<Album> albums = Album.dao.find("select * from album where a_name = " + "'" + a_name + "'");
         if (albums.size() == 0) {
             // 相册不存在，可以添加
             Album album = new Album();
@@ -30,17 +30,17 @@ public class AlbumService {
             album.setAAuth(Integer.parseInt(a_auth));
             if (album.save()) {
                 // 添加成功
-                baseResponse.setResult(ResultCodeEnum.REGISTER_SUCCESS);
+                baseResponse.setResult(ResultCodeEnum.ALBUM_ADD_SUCCESS);
             } else {
                 // 添加失败，数据库操作错误
-                baseResponse.setResult(ResultCodeEnum.REGISTER_FAILURE_DB_ERROR);
+                baseResponse.setResult(ResultCodeEnum.ALBUM_ADD_FAILURE_DB_ERROR);
             }
         } else if (albums.size() == 1) {
             // 添加失败，相册已经存在
-            baseResponse.setResult(ResultCodeEnum.REGISTER_FAILURE_USER_EXIST);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_ADD_FAILURE_ALBUM_EXIST);
         } else {
             // 添加失败，未知的系统错误
-            baseResponse.setResult(ResultCodeEnum.REGISTER_FAILURE_SYS_ERROR);
+            baseResponse.setResult(ResultCodeEnum.ALBUM_ADD_FAILURE_SYS_ERROR);
         }
         return baseResponse;
     }

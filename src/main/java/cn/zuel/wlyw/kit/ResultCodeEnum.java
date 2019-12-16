@@ -46,6 +46,11 @@ public enum ResultCodeEnum {
 
     MODIFY_SUCCESS("5005", "修改成功"),
 
+    ALBUM_ADD_SUCCESS("5006", "新建相册成功"),
+    ALBUM_ADD_FAILURE_DB_ERROR("5007", "新建相册失败_数据库操作错误"),
+    ALBUM_ADD_FAILURE_ALBUM_EXIST("5008", "新建相册失败_账户已存在"),
+    ALBUM_ADD_FAILURE_SYS_ERROR("5009", "新建相册失败_系统错误"),
+
     CATEGORY_QUERY_NULL("6000", "货品类别查询为空"),
     CATEGORY_QUERY_SUCCESS("6001", "货品查询成功"),
     GOODS_QUERY_SUCCESS("6002", "货品查询成功"),
