@@ -86,13 +86,14 @@ public class UserController extends Controller {
      */
     public void modifyInfo() {
         BaseResponse baseResponse = new BaseResponse();
+        String u_id = getPara("u_id");
         String u_nickname = getPara("u_nickname");
         String u_phone = getPara("u_phone");
         String u_gender = getPara("u_gender");
         String u_qq = getPara("u_qq");
 
-        if (!StrKit.isBlank(u_nickname) && !StrKit.isBlank(u_phone) && !StrKit.isBlank(u_gender) && !StrKit.isBlank(u_qq)) {
-            baseResponse = userService.modifyInfo(u_nickname, u_phone, u_gender, u_qq);
+        if (!StrKit.isBlank(u_id) && !StrKit.isBlank(u_phone)) {
+            baseResponse = userService.modifyInfo(u_id, u_nickname, u_phone, u_gender, u_qq);
         } else {
             // 请求参数有空
             baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
@@ -109,7 +110,7 @@ public class UserController extends Controller {
         if (!StrKit.isBlank(u_id)) {
             baseResponse = userService.getInfo(u_id);
         } else {
-            // 请求学号、名字、qq不能为空
+            // 请求用户id不能为空
             baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
         }
         renderJson(baseResponse);

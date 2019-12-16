@@ -107,24 +107,25 @@ public class UserService {
      * @param u_qq
      * @return
      */
-    public BaseResponse modifyInfo(String u_nickname, String u_phone, String u_gender,  String u_qq) {
+    public BaseResponse modifyInfo(String u_id, String u_nickname, String u_phone, String u_gender, String u_qq) {
         BaseResponse baseResponse = new BaseResponse();
-        User user = User.dao.findFirst("select * from user where u_phone =" + "'" + u_phone + "'");
+        User user = User.dao.findFirst("select * from user where u_id =" + "'" + u_id + "'");
         if (user != null) {
             // 查找记录不为空
             user.setUNickname(u_nickname);
+            user.setUPhone(u_phone);
             user.setUGender(u_gender);
             user.setUQq(u_qq);
             if (user.update()) {
                 // 用户信息修改成功
-                baseResponse.setResult(ResultCodeEnum.DB_UPDATE_SUCCESS);
+                baseResponse.setResult(ResultCodeEnum.USER_MODIFY_INFO_SUCCESS);
             } else {
                 // 用户信息修改失败，数据库错误
-                baseResponse.setResult(ResultCodeEnum.DB_UPDATE_ERROR);
+                baseResponse.setResult(ResultCodeEnum.USER_MODIFY_INFO_FAILURE);
             }
         } else {
             // 该账户不存在
-            baseResponse.setResult(ResultCodeEnum.RECORD_NO_EXIST);
+            baseResponse.setResult(ResultCodeEnum.USER_QUERY_NULL);
         }
         return baseResponse;
     }
@@ -143,7 +144,7 @@ public class UserService {
             baseResponse.setResult(ResultCodeEnum.USER_QUERY_SUCCESS);
         } else {
             // 该账户不存在
-            baseResponse.setResult(ResultCodeEnum.RECORD_NO_EXIST);
+            baseResponse.setResult(ResultCodeEnum.USER_QUERY_NULL);
         }
         return baseResponse;
     }

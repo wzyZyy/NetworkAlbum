@@ -86,6 +86,10 @@ public enum ResultCodeEnum {
 
 
     USER_QUERY_SUCCESS("7000", "用户查询成功"),
+    USER_QUERY_NULL("7001", "用户不存在"),
+    USER_MODIFY_INFO_SUCCESS("7002", "用户修改信息成功"),
+    USER_MODIFY_INFO_FAILURE("7003", "用户修改信息失败"),
+
     TEST("9000", "测试");
 
 
