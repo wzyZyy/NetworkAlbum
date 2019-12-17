@@ -48,7 +48,7 @@ public class ImageController extends Controller {
         BaseResponse baseResponse = new BaseResponse();
         String i_id = getPara("i_id");
         if (!StrKit.isBlank(i_id)) {
-            imageService.deleteImage(i_id);
+            baseResponse = imageService.deleteImage(i_id);
         } else {
             baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
         }
