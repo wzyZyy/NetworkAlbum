@@ -40,4 +40,18 @@ public class ImageController extends Controller {
         }
         renderJson(baseResponse);
     }
+
+    /**
+     * 删除图片
+     */
+    public void deleteImage() {
+        BaseResponse baseResponse = new BaseResponse();
+        String i_id = getPara("i_id");
+        if (!StrKit.isBlank(i_id)) {
+            imageService.deleteImage(i_id);
+        } else {
+            baseResponse.setResult(ResultCodeEnum.PARA_NUM_ERROR);
+        }
+        renderJson(baseResponse);
+    }
 }

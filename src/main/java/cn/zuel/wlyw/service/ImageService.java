@@ -51,4 +51,26 @@ public class ImageService {
         }
         return baseResponse;
     }
+
+    /**
+     * 删除照片
+     *
+     * @param i_id
+     * @return
+     */
+    public BaseResponse deleteImage(String i_id) {
+        BaseResponse baseResponse = new BaseResponse();
+        Image image = Image.dao.findById(i_id);
+
+        if (image != null) {
+            if (image.delete()) {
+                baseResponse.setResult(ResultCodeEnum.IMAGE_DELETE_SUCCESS);
+            } else {
+                baseResponse.setResult(ResultCodeEnum.IMAGE_DELETE_FAILURE_DB_ERROR);
+            }
+        } else {
+            baseResponse.setResult(ResultCodeEnum.IMAGE_NOT_EXIST);
+        }
+        return baseResponse;
+    }
 }
