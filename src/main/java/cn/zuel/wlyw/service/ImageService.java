@@ -47,7 +47,7 @@ public class ImageService {
             baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_NULL);
         } else {
             // 服务器未知错误
-            baseResponse.setResult(ResultCodeEnum.UNKOWN_ERROE);
+            baseResponse.setResult(ResultCodeEnum.UNKNOWN_ERROR);
         }
         return baseResponse;
     }
