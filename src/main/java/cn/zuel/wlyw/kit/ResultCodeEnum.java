@@ -3,16 +3,12 @@ package cn.zuel.wlyw.kit;
 
 public enum ResultCodeEnum {
 
-    UNKNOWN_ERROR("1003", "服务器未知的错误"),
-
     RECORD_NO_EXIST("1006", "记录不存在"),
-
 
     DB_UPDATE_SUCCESS("2002", "数据库修改成功"),
     DB_UPDATE_ERROR("2003", "数据库修改失败"),
 
     PARA_NUM_ERROR("3001", "请求的参数个数错误"),
-
 
     LOGIN_SUCCESS("4000", "登录成功"),
     LOGIN_ERROR("4001", "登录失败_账号或密码错误"),

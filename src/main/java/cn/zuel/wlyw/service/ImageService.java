@@ -43,11 +43,8 @@ public class ImageService {
         if (imageList.size() > 0) {
             baseResponse.setData(imageList);
             baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_SUCCESS);
-        } else if (imageList.size() == 0) {
-            baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_NULL);
         } else {
-            // 服务器未知错误
-            baseResponse.setResult(ResultCodeEnum.UNKNOWN_ERROR);
+            baseResponse.setResult(ResultCodeEnum.IMAGE_QUERY_NULL);
         }
         return baseResponse;
     }
